@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:animate_do/animate_do.dart';
 import 'package:cosmetics_exam/core/components/app_image.dart';
 import 'package:cosmetics_exam/core/logic/goTo_helper.dart';
 import 'package:cosmetics_exam/views/on_boarding.dart';
@@ -16,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () => goTo(OnBoardingView()));
+    Timer(Duration(seconds: 10), () => goTo(OnBoardingView()));
   }
 
   @override
@@ -27,7 +28,9 @@ class _SplashViewState extends State<SplashView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppImage(pass: 'splash.png', height: 200.h, width: 200.w),
+            FadeInRightBig(
+              child: AppImage(pass: 'splash.png', height: 200.h, width: 200.w),
+            ),
             Text(
               'Avon',
               style: TextStyle(
