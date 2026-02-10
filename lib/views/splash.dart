@@ -1,18 +1,44 @@
+import 'dart:async';
+import 'package:cosmetics_exam/core/components/app_image.dart';
+import 'package:cosmetics_exam/core/logic/goTo_helper.dart';
+import 'package:cosmetics_exam/views/on_boarding.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SplashView extends StatelessWidget {
+class SplashView extends StatefulWidget {
   const SplashView({super.key});
+
+  @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3), () => goTo(OnBoardingView()));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color(0xffD9D9D9),
-body:Center(
-  child: SvgPicture.asset('assets/icons/splash.png'),
-  ///todo
-
-) ,
-    ) ;
+      backgroundColor: Color(0xffD9D9D9),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AppImage(pass: 'splash.png', height: 200.h, width: 200.w),
+            Text(
+              'Avon',
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+                fontSize: 30.sp,
+                color: Color(0xff434C6D),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

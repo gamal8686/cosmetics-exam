@@ -34,6 +34,16 @@ class AppImage extends StatelessWidget {
         fit: BoxFit.cover,
         color: color,
       );
+    } else if (pass.endsWith('png')) {
+      return Image.asset(
+        'assets/icons/$pass',
+        height: height,
+        width: width,
+        fit: BoxFit.cover,
+        color: color,
+        errorBuilder: (context, error, stackTrace) =>
+            Container(color: Colors.white.withValues(alpha: 0.5)),
+      );
     }
     return Image.asset(
       'assets/icons/$pass',
@@ -41,9 +51,8 @@ class AppImage extends StatelessWidget {
       width: width,
       fit: BoxFit.cover,
       color: color,
-      errorBuilder:(context, error, stackTrace) => Container(
-        color: Colors.white.withValues(alpha: 0.5),
-      ) ,
+      errorBuilder: (context, error, stackTrace) =>
+          Container(color: Colors.white.withValues(alpha: 0.5)),
     );
   }
 }
