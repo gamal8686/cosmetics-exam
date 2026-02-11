@@ -17,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 10), () => goTo(OnBoardingView()));
+    Timer(Duration(seconds: 2), () => goTo(OnBoardingView()));
   }
 
   @override
@@ -29,16 +29,9 @@ class _SplashViewState extends State<SplashView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FadeInRightBig(
-              child: AppImage(pass: 'splash.png', height: 200.h, width: 200.w),
+              child: AppImage(pass: 'logo.png', height: 200.h, width: 200.w),
             ),
-            Text(
-              'Avon',
-              style: TextStyle(
-                fontFamily: 'Montserrat',
-                fontSize: 30.sp,
-                color: Color(0xff434C6D),
-              ),
-            ),
+            AppImage(pass: 'splash_txt.png',)
           ],
         ),
       ),

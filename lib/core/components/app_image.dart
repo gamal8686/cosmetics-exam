@@ -20,7 +20,7 @@ class AppImage extends StatelessWidget {
   Widget build(BuildContext context) {
     if (pass.toLowerCase().endsWith('svg')) {
       return SvgPicture.asset(
-        'assets/svg/$pass',
+        'assets/icons/$pass',
         height: height,
         width: width,
         fit: BoxFit.cover,
@@ -36,7 +36,7 @@ class AppImage extends StatelessWidget {
       );
     } else if (pass.endsWith('png')) {
       return Image.asset(
-        'assets/icons/$pass',
+        'assets/images/$pass',
         height: height,
         width: width,
         fit: BoxFit.cover,
