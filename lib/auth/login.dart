@@ -61,6 +61,8 @@ class _LoginViewState extends State<LoginView> {
                     Expanded(
                       flex: 3,
                       child: AppInput(
+                        keyboardType: TextInputType.visiblePassword,
+
                         controller: phoneNumber,
                         labelText: 'Phone Number',
                         onTap: () {},
@@ -70,10 +72,12 @@ class _LoginViewState extends State<LoginView> {
                   ],
                 ),
                 AppInput(
+                  suffix: true,
+                  isPassword: true,
+                  keyboardType: TextInputType.visiblePassword,
 
                   controller: passwordNumber,
                   labelText: 'Your Password',
-                  suffix: true,
                 ),
                 Align(
                   alignment: Alignment.centerRight,

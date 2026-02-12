@@ -6,8 +6,10 @@ class AppInput extends StatefulWidget {
   final String? labelText;
   final void Function()? onTap;
   final double? cursorHeight;
-  final bool suffix;
+
   final TextInputType? keyboardType;
+  final bool isPassword;
+  final bool suffix;
 
   final TextEditingController? controller;
   final String? Function(String?)? validator;
@@ -17,10 +19,12 @@ class AppInput extends StatefulWidget {
     this.labelText,
     this.onTap,
     this.cursorHeight,
-    this.suffix = false,
+
     this.controller,
     this.validator,
-    this.keyboardType,
+    this.keyboardType ,
+    this.isPassword=false ,
+    this.suffix = false,
   });
 
   @override
@@ -28,7 +32,7 @@ class AppInput extends StatefulWidget {
 }
 
 class _AppInputState extends State<AppInput> {
-  bool suffixIcon = false;
+  bool suffixIcon = true;
 
   @override
   Widget build(BuildContext context) {
@@ -36,25 +40,29 @@ class _AppInputState extends State<AppInput> {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         keyboardType: widget.keyboardType,
-        obscureText:  false,
+
+        obscureText: widget.isPassword && suffixIcon,
+
+
         validator: widget.validator,
         controller: widget.controller,
         cursorHeight: widget.cursorHeight,
 
         decoration: InputDecoration(
           suffixIcon: widget.suffix
-              ? GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      suffixIcon = !suffixIcon; // يقلب الرؤية بس
-                    });
-                  },
-                  child: Padding(
+              ? IconButton(
+            onPressed:  () {
+              setState(() {
+                suffixIcon = !suffixIcon;
+              });
+            },
+
+                 icon:  Padding(
                     padding: const EdgeInsets.all(14.0),
                     child: AppImage(
                       pass: suffixIcon
-                          ? 'visibility_on.svg'
-                          : 'visibility_off.svg',
+                          ? 'visibility_off.svg'
+                          : 'visibility_on.svg',
                       height: 20.h,
                       width: 20.w,
                     ),
